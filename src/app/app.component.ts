@@ -31,7 +31,6 @@ export class AppComponent {
       response.json().then(function(data) {
 
         let fetchedSatellites = data.satellites;
-        let Satellite = [];
 
         // TODO: loop over satellites
         // TODO: create a Satellite object using new Satellite(fetchedSatellites[i].name, fetchedSatellites[i].type, fetchedSatellites[i].launchDate, fetchedSatellites[i].orbitType, fetchedSatellites[i].operational);
@@ -41,11 +40,11 @@ export class AppComponent {
         // }
 
         for (let item of fetchedSatellites) {
-          Satellite = [item.name, item.type, item.launchDate, item.orbitType, item.operational];
-          this.sourceList.push(Satellite);
+          let satellite = new Satellite(item.name, item.type, item.launchDate, item.orbitType, item.operational);
+          this.sourceList.push(satellite);
         }
 
-        console.log(this.sourceList);
+        // console.log(this.sourceList);
 
       }.bind(this));
     }.bind(this));
